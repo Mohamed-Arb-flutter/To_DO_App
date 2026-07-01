@@ -7,10 +7,10 @@ class CustomTextfiled extends StatelessWidget {
     super.key,
     this.suffixIcon,
     required this.name,
-    required this.iconData,
+     this.iconData,
   });
   final String name;
-  final SvgPicture iconData;
+  final SvgPicture? iconData;
   final IconData? suffixIcon;
   @override
   Widget build(BuildContext context) {

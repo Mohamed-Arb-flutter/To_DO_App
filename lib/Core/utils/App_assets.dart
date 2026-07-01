@@ -22,6 +22,7 @@ abstract class AppSvg {
 
 abstract class AppPng {
   static Image plastin = Image.asset("assets/imges/plasten.png");
+   static AssetImage plastinn = AssetImage("assets/imges/plasten.png");
   static Image flotaction = Image.asset(
     "assets/imges/Paper Plus - Iconly Pro.png",
     

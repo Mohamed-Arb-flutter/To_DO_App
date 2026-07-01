@@ -31,4 +31,10 @@ abstract class AppTextStyle {
     fontWeight: FontWeight.w500,
     fontFamily: 'LexendDeca',
   );
+  static const TextStyle Appbar = TextStyle(
+    fontSize: 19,
+    color: Color(0xff24252C),
+    fontWeight: FontWeight.w300,
+    fontFamily: 'LexendDeca',
+  );
 }
