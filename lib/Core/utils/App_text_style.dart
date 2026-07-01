@@ -19,4 +19,16 @@ abstract class AppTextStyle {
     fontWeight: FontWeight.w300,
     fontFamily: 'LexendDeca',
   );
+  static const TextStyle alreadyAccount = TextStyle(
+    fontSize: 14,
+    color: Color(0xff000000),
+    fontWeight: FontWeight.w300,
+    fontFamily: 'LexendDeca',
+  );
+  static const TextStyle loginAccount = TextStyle(
+    fontSize: 16,
+    color: Color(0xff000000),
+    fontWeight: FontWeight.w500,
+    fontFamily: 'LexendDeca',
+  );
 }

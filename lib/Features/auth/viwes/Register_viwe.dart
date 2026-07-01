@@ -1,10 +1,57 @@
 import 'package:flutter/material.dart';
+import 'package:todo/Core/utils/App_Size.dart';
+import 'package:todo/Core/utils/App_Text.dart';
+import 'package:todo/Core/utils/App_assets.dart';
+import 'package:todo/Core/utils/App_icons.dart';
+import 'package:todo/Core/utils/App_navigate.dart';
+import 'package:todo/Core/utils/App_text_style.dart';
+import 'package:todo/Core/widghts/custom_bootom.dart';
+import 'package:todo/Features/auth/viwes/Widghts/custom_TextFiled.dart';
+import 'package:todo/Features/auth/viwes/login_viwe.dart';
 
 class RegisterViwe extends StatelessWidget {
   const RegisterViwe({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: ListView(
+        children: [
+          AppPng.plastin,
+          SizedBox(height: AppSize.appbarHeight),
+          CustomTextfiled(
+            name: AppText.username,
+            iconData: AppSvg.Username_icon,
+          ),
+          SizedBox(height: AppSize.textfieldHeight),
+          CustomTextfiled(
+            name: AppText.password,
+            iconData: AppSvg.password_icon,
+            suffixIcon: AppIcons.appIcon,
+          ),
+          SizedBox(height: AppSize.textfieldHeight),
+          CustomTextfiled(
+            name: AppText.confirmpassword,
+            iconData: AppSvg.password_icon,
+            suffixIcon: AppIcons.appIcon,
+          ),
+          SizedBox(height: AppSize.buttonHeight),
+          CustomBootom(name: AppText.Register, onPressed: () {}),
+          SizedBox(height: AppSize.buttonHeight),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(AppText.already, style: AppTextStyle.alreadyAccount),
+              SizedBox(width: AppSize.wight),
+              GestureDetector(
+                onTap: () =>
+                    AppNavigate.toPUSHReplacement(context, const LoginViwe()),
+                child: Text(AppText.Login, style: AppTextStyle.loginAccount),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
