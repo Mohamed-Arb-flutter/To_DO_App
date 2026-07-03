@@ -1,0 +1,52 @@
+import 'package:dart_either/dart_either.dart';
+import 'package:dio/dio.dart';
+import 'package:todo/Features/auth/data/model/Login_model.dart';
+
+import 'package:todo/Features/auth/data/model/register_model.dart';
+
+Dio dio = Dio();
+String baseUrl = "https://ntitodo-production-3c33.up.railway.app/api/";
+String? accessToken;
+
+class Authrebo {
+  Future<Either<String, RegisterModel>> register({
+    required username,
+    required password,
+  }) async {
+    try {
+      var Resbonse = await dio.post(
+        '$baseUrl/register',
+        data: FormData.fromMap({'username': username, 'password': password}),
+      );
+      var mapResponse = Resbonse.data as Map<String, dynamic>;
+
+      RegisterModel registerModel = RegisterModel.fromJson(mapResponse);
+
+      return Right(registerModel);
+    } on Exception catch (e) {
+      return Left(e.toString());
+    }
+  }
+}
+
+    Future<Either<String,LoginModel>> login({
+    required String username,
+    required String password
+}) async {
+    try {
+
+      var response = await dio.post('$baseUrl/login',
+          data: FormData.fromMap({'username': username, 'password': password}));
+
+      var mapResponse = response.data as Map<String, dynamic>;
+      LoginResponseModel loginResponseModel =
+      LoginResponseModel.fromJson(mapResponse);
+      accessToken =loginResponseModel.accessToken;
+
+      return Right(LoginModel.fromJson(mapResponse));
+
+    } catch (e) {
+      return Left(e.toString());
+    }
+  }
+

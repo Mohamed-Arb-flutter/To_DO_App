@@ -7,16 +7,18 @@ class CustomTextfiled extends StatelessWidget {
     super.key,
     this.suffixIcon,
     required this.name,
-     this.iconData,
+     this.iconData, this.controller,
   });
   final String name;
   final SvgPicture? iconData;
   final IconData? suffixIcon;
+  final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: TextFormField(
+        controller:controller ,
         decoration: InputDecoration(
           prefixIcon: Padding(
             padding: const EdgeInsets.all(5),

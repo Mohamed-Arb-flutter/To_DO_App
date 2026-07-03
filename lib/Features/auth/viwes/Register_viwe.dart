@@ -9,9 +9,17 @@ import 'package:todo/Core/widghts/custom_bootom.dart';
 import 'package:todo/Features/auth/viwes/Widghts/custom_TextFiled.dart';
 import 'package:todo/Features/auth/viwes/login_viwe.dart';
 
-class RegisterViwe extends StatelessWidget {
+class RegisterViwe extends StatefulWidget {
   const RegisterViwe({super.key});
 
+  @override
+  State<RegisterViwe> createState() => _RegisterViweState();
+}
+
+class _RegisterViweState extends State<RegisterViwe> {
+  final TextEditingController name = TextEditingController();
+  final TextEditingController password = TextEditingController();
+ // final namecontrol = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,11 +28,13 @@ class RegisterViwe extends StatelessWidget {
           AppPng.plastin,
           SizedBox(height: AppSize.appbarHeight),
           CustomTextfiled(
+            controller:name,
             name: AppText.username,
             iconData: AppSvg.Username_icon,
           ),
           SizedBox(height: AppSize.textfieldHeight),
           CustomTextfiled(
+            controller:password,
             name: AppText.password,
             iconData: AppSvg.password_icon,
             suffixIcon: AppIcons.appIcon,
