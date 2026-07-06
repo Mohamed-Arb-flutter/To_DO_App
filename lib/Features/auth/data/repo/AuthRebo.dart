@@ -9,7 +9,7 @@ String baseUrl = "https://ntitodo-production-3c33.up.railway.app/api";
 String? accessToken;
 
 class Authrebo {
-  Future<Either<String,String>> register({
+  Future<Either<String, String>> register({
     required username,
     required password,
   }) async {
@@ -58,7 +58,8 @@ class Authrebo {
       );
       var mapResponse = response.data as Map<String, dynamic>;
       MyTask myTask = MyTask.fromJson(mapResponse);
-      return Right(myTask.tasks!);
+
+      return Right(myTask.tasks ?? []);
     } catch (e) {
       return Left(e.toString());
     }

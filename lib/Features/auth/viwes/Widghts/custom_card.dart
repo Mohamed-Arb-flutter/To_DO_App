@@ -3,10 +3,11 @@ import 'package:todo/Core/utils/App_Color.dart';
 import 'package:todo/Core/utils/App_Size.dart';
 import 'package:todo/Core/utils/App_navigate.dart';
 import 'package:todo/Features/Add/viwes/update&delet_task.dart';
+import 'package:todo/Features/auth/data/model/My_task.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({super.key});
-
+  const CustomCard({super.key, required this.task});
+  final Tasks task;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -25,13 +26,13 @@ class CustomCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Text('My First Task'),
+                  Text(task.title ?? 'No Title'),
                   Spacer(flex: 1),
-                  Text('11/03/2025 \n05:00 PM'),
+                  Text('${task.date}'),
                 ],
               ),
               SizedBox(height: AppSize.appbarHeight),
-              Text('Improve my English skills\n by trying to speek'),
+              Text(task.description ?? 'No Description'),
             ],
           ),
         ),
