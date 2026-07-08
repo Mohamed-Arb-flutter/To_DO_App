@@ -1,5 +1,5 @@
-import 'package:todo/Features/auth/data/model/My_task.dart';
 
+import 'package:todo/Features/auth/data/model/My_task.dart';
 
 class HomeState {}
 
@@ -14,6 +14,6 @@ class HomeError extends HomeState {
 
 class HomeSuccess extends HomeState {
   List<Tasks> tasks;
+
   HomeSuccess(this.tasks);
 }
-

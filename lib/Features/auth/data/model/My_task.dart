@@ -1,3 +1,5 @@
+import 'package:todo/Features/auth/data/model/Login_model.dart';
+
 class Tasks {
   int? id;
   String? title;
@@ -18,9 +20,10 @@ class Tasks {
 
 class MyTask {
   List<Tasks>? tasks;
+
   bool? states;
 
-  MyTask({this.tasks, this.states});
+  MyTask({this.tasks, this.states,});
 
   MyTask.fromJson(Map<String, dynamic> json) {
     if (json['tasks'] != null) {

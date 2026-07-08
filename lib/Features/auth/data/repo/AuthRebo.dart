@@ -9,6 +9,8 @@ String baseUrl = "https://ntitodo-production-3c33.up.railway.app/api";
 String? accessToken;
 
 class Authrebo {
+  static String? user;
+  static int index = 0;
   Future<Either<String, String>> register({
     required username,
     required password,
@@ -43,14 +45,14 @@ class Authrebo {
         mapResponse,
       );
       accessToken = loginResponseModel.accessToken;
-
+      user = loginResponseModel.user!.username;
       return Right(LoginModel.fromJson(mapResponse));
     } catch (e) {
       return Left(e.toString());
     }
   }
 
-  Future<Either<String, List<Tasks>>> Mytask() async {
+  Future<Either<String, (List<Tasks>,)>> Mytask() async {
     try {
       var response = await dio.get(
         '$baseUrl/my_tasks',
@@ -58,8 +60,8 @@ class Authrebo {
       );
       var mapResponse = response.data as Map<String, dynamic>;
       MyTask myTask = MyTask.fromJson(mapResponse);
-
-      return Right(myTask.tasks ?? []);
+      index = myTask.tasks?.length??0;
+      return Right((myTask.tasks ?? [],));
     } catch (e) {
       return Left(e.toString());
     }
